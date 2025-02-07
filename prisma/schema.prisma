@@ -13,8 +13,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model courses {
-  id          Int @default(autoincrement()) @id
-  coursename  String
-  description String?
+model Course {  
+  id          Int     @id @default(autoincrement())  
+  coursename  String  
+  description String  
 }
