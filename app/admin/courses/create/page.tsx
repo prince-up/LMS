@@ -2,15 +2,25 @@
 import axios from "axios";
 import { useState } from 'react';
 import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/card"
+import { Input } from "@/components/ui/input"
 
-
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function Page() {
     const [coursename, setCoursename] = useState("");
     const [description, setDescription] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
+    // const [error, setError] = useState(null);
+    // const [success, setSuccess] = useState(null);
 
     async function postData() {
         setLoading(true);
@@ -33,28 +43,43 @@ export default function Page() {
     }
 
     return (
-        <div>
-            <h1>Create Course</h1>
-            <br />
-            <input
-                type="text"
+        <div className=" flex mt-16 ml-30 justify-center">
+             <Card className="w-[550px]">
+      <CardHeader>
+        <CardTitle>Create Course</CardTitle>
+        <CardDescription>Create new course in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Course Name</Label>
+              <Input id="name"
                 placeholder="Course Name"
                 value={coursename}
-                onChange={(e) => setCoursename(e.target.value)}
-            />
-            <br />
-            <input
-                type="text"
+                onChange={(e) => setCoursename(e.target.value)}/>
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Description</Label>
+              <Textarea  type="text"
                 placeholder="Description"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <br />
-            <Button onClick={postData} disabled={loading}>
+                onChange={(e) => setDescription(e.target.value)}/>
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+
+        <Button onClick={postData} disabled={loading}>
                 {loading ? "Posting..." : "Post"}
-            </Button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {success && <p style={{ color: 'green' }}>{success}</p>}
+        </Button>
+        
+      </CardFooter>
+    </Card>
+            
+            
+           
         </div>
     );
 }

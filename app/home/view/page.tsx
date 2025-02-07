@@ -9,7 +9,8 @@ export default function CoursePage() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get("http://localhost:3000/admin/courses/create");
+                const response = await axios.get("http://localhost:3000/admin/courses/api");
+                // D:\Cohort 3\course\app\admin\courses\api
                 console.log("API Response:", response.data);
 
                 // Ensure data is an array
@@ -32,9 +33,15 @@ export default function CoursePage() {
             <h1>hi there</h1>
             {courses && courses.length > 0 ? (
                 <ul>
+                    <div className="grid grid-cols-3 gap-4">
                     {courses.map((course, index) => (
-                        <li key={index}>{course.courseName}</li>
+                        <div className="bg-slate-900 p-4 rounded-lg shadow-md">
+
+                        <li key={index}>
+                        <h1 className="text-xl font-semibold text-white"> {course.coursename} </h1> : {course.description}</li>
+                        </div>
                     ))}
+            </div>
                 </ul>
             ) : (
                 <p>No courses available</p>
