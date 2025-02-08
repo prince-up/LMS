@@ -4,9 +4,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
-  // Extract 'id' from the request URL
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
+  // Extract 'id' from the dynamic route
+  const id = req.nextUrl.pathname.split("/").pop(); // Extracting id from URL
 
   if (!id) {
     return NextResponse.json({ error: "Course ID is required" }, { status: 400 });
