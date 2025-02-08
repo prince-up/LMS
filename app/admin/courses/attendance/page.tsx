@@ -1,6 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function AttendancePage() {
   const [students, setStudents] = useState([]);
@@ -61,12 +73,34 @@ export default function AttendancePage() {
             </li>
           ))}
         </ul>
-        <button
+
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Submit Attendance</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Confirm Attendance</DialogTitle>
+              <DialogDescription>
+                Are you sure you want to submit the attendance? You cannot modify it after submission.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label className="col-span-4 text-center">
+                  Please confirm your submission.
+                </Label>
+              </div>
+            </div>
+            <DialogFooter>
+            <button type="submit"
           onClick={submitAttendance}
           className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg shadow-lg transition"
         >
-          Submit Attendance
-        </button>
+          Submit Attendance</button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
