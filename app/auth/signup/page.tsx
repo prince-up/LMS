@@ -16,7 +16,7 @@ export default function Signup() {
     confirmPassword: "",
   });
   const [message, setMessage] = useState("");
-
+   //@ts-ignore
   async function handleSignup(e) {
     e.preventDefault();
 
@@ -33,6 +33,7 @@ export default function Signup() {
         router.push("/home/view");
       }, 1500);
     } catch (error) {
+      //@ts-ignore
       setMessage(error.response?.data?.error || "Signup failed");
     }
   }

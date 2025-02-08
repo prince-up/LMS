@@ -14,9 +14,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+// Define the student type
+interface Student {
+  id: string; // Assuming the id is a string, adjust if necessary
+  name: string;
+}
+
 export default function AttendancePage() {
-  const [students, setStudents] = useState([]);
-  const [attendance, setAttendance] = useState({});
+  const [students, setStudents] = useState<Student[]>([]); // Use the defined Student type
+  const [attendance, setAttendance] = useState<{ [key: string]: boolean }>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +32,7 @@ export default function AttendancePage() {
         if (response.data.success) {
           setStudents(response.data.users);
           // Initialize attendance state with false (absent)
-          const initialAttendance = response.data.users.reduce((acc, student) => {
+          const initialAttendance = response.data.users.reduce((acc: any, student: Student) => {
             acc[student.id] = false;
             return acc;
           }, {});
@@ -42,7 +48,7 @@ export default function AttendancePage() {
     fetchStudents();
   }, []);
 
-  const toggleAttendance = (id) => {
+  const toggleAttendance = (id: string) => {
     setAttendance((prev) => ({
       ...prev,
       [id]: !prev[id], // Toggle attendance
@@ -93,11 +99,13 @@ export default function AttendancePage() {
               </div>
             </div>
             <DialogFooter>
-            <button type="submit"
-          onClick={submitAttendance}
-          className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg shadow-lg transition"
-        >
-          Submit Attendance</button>
+              <button
+                type="submit"
+                onClick={submitAttendance}
+                className="mt-6 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg shadow-lg transition"
+              >
+                Submit Attendance
+              </button>
             </DialogFooter>
           </DialogContent>
         </Dialog>

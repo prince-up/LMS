@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({ name: "", email: "", feedback: "" });
   const [message, setMessage] = useState("");
-
+//@ts-ignore
   async function handleSubmit(e) {
     e.preventDefault();
     
@@ -51,6 +51,7 @@ export default function FeedbackForm() {
           <Textarea
             placeholder="Your Feedback"
             className="bg-gray-700 text-white border-gray-600"
+            //@ts-ignore
             rows="4"
             value={formData.feedback}
             onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}

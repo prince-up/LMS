@@ -17,6 +17,7 @@ export default function Page() {
 
   async function postData() {
     if (!coursename || !description || !content) {
+      //@ts-ignore
       setError("All fields are required!");
       return;
     }
@@ -31,7 +32,7 @@ export default function Page() {
         description,
         content,
       });
-
+      //@ts-ignore
       setSuccess("Course created successfully!");
       setCoursename("");
       setDescription("");

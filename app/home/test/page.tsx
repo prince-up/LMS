@@ -3,8 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+// Define the type for the test object
+type Test = {
+  id: string;
+  title: string;
+};
+
 export default function TestList() {
-  const [tests, setTests] = useState([]);
+  const [tests, setTests] = useState<Test[]>([]); // Use Test[] as the type for tests
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -12,7 +18,7 @@ export default function TestList() {
     async function fetchTests() {
       try {
         const response = await axios.get("http://localhost:3000/admin/courses/api/tests");
-        setTests(response.data.tests);
+        setTests(response.data.tests); // Set tests to the fetched data
       } catch (error) {
         console.error("Error fetching tests:", error);
       } finally {
@@ -32,7 +38,7 @@ export default function TestList() {
           <li
             key={test.id}
             className="p-4 bg-gray-800 rounded-lg mb-4 cursor-pointer hover:bg-gray-700"
-            onClick={() => router.push(`http://localhost:3000/home/test/${test.id}`)}
+            onClick={() => router.push(`/home/test/${test.id}`)} // Update to a relative path for routing
           >
             {test.title}
           </li>

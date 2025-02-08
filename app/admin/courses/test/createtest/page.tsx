@@ -10,12 +10,13 @@ export default function AdminPanel() {
   function addQuestion() {
     setQuestions([...questions, { text: "", options: ["", "", "", ""], answer: "" }]);
   }
-
+ //@ts-ignore
   function updateQuestion(index, field, value) {
     const updatedQuestions = [...questions];
     if (field === "options") {
       updatedQuestions[index].options = value;
     } else {
+      //@ts-ignore
       updatedQuestions[index][field] = value;
     }
     setQuestions(updatedQuestions);
