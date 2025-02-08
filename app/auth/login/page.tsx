@@ -20,7 +20,7 @@ export default function Login() {
       setMessage("✅ Login successful! Redirecting...");
 
       setTimeout(() => {
-        router.push("/home/view");
+        router.push("/home");
       }, 1500);
     } catch (error: any) {
       setMessage(error.response?.data?.error || "❌ Login failed");
