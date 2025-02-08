@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import React from "react";
 
 export default function Navbar() {
   return (
@@ -11,22 +12,25 @@ export default function Navbar() {
       {/* Center Navigation */}
       <div className="flex items-center space-x-6 bg-black/20 px-6 py-2 rounded-full shadow-sm shadow-blue-400/20 hover:shadow-blue-500/40 transition-all duration-300">
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
-          <Link href="/admin/courses/allcourses">Courses</Link>
+          <Link href="/home/view">Home</Link>
         </Button>
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
-          <Link href="/admin/courses/create">Add Course</Link>
+          <Link href="/home/view">Courses</Link>
         </Button>
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
-          <Link href="/admin/courses/allcourses"> Logout</Link>
+          <Link href="/home/test">Tests</Link>
+        </Button>
+        <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
+          <Link href="/home/feedback">Feedback</Link>
         </Button>
       </div>
 
-      {/* Right User Mode Button */}
+      {/* Right Logout Button */}
       <Button
         variant="ghost"
         className="bg-black/20 text-white px-6 py-2 rounded-full hover:bg-black/30 shadow-sm shadow-blue-400/20 hover:shadow-blue-500/40 transition-all duration-300"
       >
-        User Mode
+        Log Out
       </Button>
     </nav>
   );

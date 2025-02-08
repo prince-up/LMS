@@ -56,7 +56,7 @@ export default function CoursePage() {
         setCourses(Array.isArray(response.data.courses) ? response.data.courses : []);
       } catch (err) {
         console.error("Error fetching data:", err);
-        setError("Failed to load courses.");
+        // setError("Failed to load courses.");
       } finally {
         setLoading(false);
       }

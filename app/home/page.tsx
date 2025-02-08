@@ -1,10 +1,11 @@
-import React from 'react'
 
 export default function home() {
   return (
     <div>
-        <h1>Good Morning lad</h1>
-        <button>View Your Courses</button>
+        <input type="email" />
+        <input type="password" />
+        <button>Sign in</button>
+        <p>not a user? <a href="http://localhost:3000/home/signup">Sign up</a></p>
     </div>
   )
 }

@@ -13,8 +13,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Course {  
-  id          Int     @id @default(autoincrement())  
-  coursename  String  
-  description String  
+model User {
+  id        String  @id @default(uuid())
+  name      String
+  email     String  @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  coursename  String
+  description String
+  content     String?  
+  createdAt   DateTime @default(now())
+}
+
+model Test {
+  id         String    @id @default(uuid())
+  title      String
+  questions  Question[]
+  createdAt  DateTime  @default(now())
+}
+
+model Question {
+  id        String   @id @default(uuid())
+  testId    String
+  test      Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+  text      String
+  options   String[] 
+  answer    String
 }
