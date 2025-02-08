@@ -28,43 +28,42 @@ export default function Login() {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-black overflow-hidden">
-      {/* Glowing Effect */}
-      <div className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_100px_50px_#fff,0_0_160px_100px_#f0f,0_0_200px_140px_#0ff]"></div>
-
+    <div className="flex min-h-screen items-center justify-center bg-black">
       {/* Login Card */}
-      <Card className="w-full max-w-md bg-gray-900 border border-gray-700 shadow-lg rounded-xl relative z-10">
+      <Card className="w-full max-w-md bg-gray-900 p-6 rounded-xl shadow-lg">
         <CardHeader>
-          <CardTitle className="text-center text-white text-2xl font-bold">Welcome Back!</CardTitle>
+        <CardTitle className="text-center text-white text-3xl font-bold">
+            Welcome to <span className="text-blue-500">100xDevs</span>
+          </CardTitle>
           <p className="text-center text-gray-400">Login to access your courses</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
+            <div>
               <Label htmlFor="email" className="text-gray-300">Email Address</Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="example@gmail.com"
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white rounded-xl"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
               />
             </div>
-            <div className="space-y-2">
+            <div>
               <Label htmlFor="password" className="text-gray-300">Password</Label>
               <Input
                 id="password"
                 type="password"
                 placeholder="********"
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white rounded-xl"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 required
               />
             </div>
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg">
+            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-xl">
               Login
             </Button>
           </form>

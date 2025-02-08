@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CourseCard from "./../../components/CourseCard";
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function CoursePage() {
   const [courses, setCourses] = useState([]);
@@ -25,7 +26,25 @@ export default function CoursePage() {
     fetchData();
   }, []);
 
-  if (loading) return <p className="text-white text-center">Loading...</p>;
+  if (loading) return(
+    <div className=" ml-20 mt-10 flex">
+      <div className="space-y-2 mt-8 mr-8">
+        <Skeleton className="h-8 w-[350px] border-2" />
+        <Skeleton className="h-8 w-[350px] border-2" />
+        <Skeleton className="h-8 w-[350px] border-2" />
+      </div>
+      <div className="space-y-2 mt-8 mr-8">
+        <Skeleton className="h-8 w-[350px] border-2" />
+        <Skeleton className="h-8 w-[350px] border-2" />
+        <Skeleton className="h-8 w-[350px] border-2" />
+      </div>
+      <div className="space-y-2 mt-8 mr-8">
+        <Skeleton className="h-8 w-[350px] border-2 " />
+        <Skeleton className="h-8 w-[350px] border-2" />
+        <Skeleton className="h-8 w-[350px] border-2" />
+      </div>
+      </div>   
+  )
 
   return (
     <div className="p-6">

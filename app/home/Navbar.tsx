@@ -12,7 +12,7 @@ export default function Navbar() {
       {/* Center Navigation */}
       <div className="flex items-center space-x-6 bg-black/20 px-6 py-2 rounded-full shadow-sm shadow-blue-400/20 hover:shadow-blue-500/40 transition-all duration-300">
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
-          <Link href="/home/view">Home</Link>
+          <Link href="/home">Home</Link>
         </Button>
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
           <Link href="/home/view">Courses</Link>

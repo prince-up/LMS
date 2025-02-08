@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function CourseDetails() {
   const { id } = useParams(); // ✅ Get course ID from URL
@@ -26,7 +27,19 @@ export default function CourseDetails() {
     if (id) fetchCourse();
   }, [id]);
 
-  if (loading) return <p className="text-white text-center">Loading...</p>;
+  if (loading) return(
+    <div className="flex">
+      <div className="space-y-2 mt-8 ml-8">
+        <Skeleton className="h-8 w-[250px] border-2" />
+        <Skeleton className="h-8 w-[950px] border-2" />
+        <Skeleton className="h-8 w-[950px] border-2" />
+        <Skeleton className="h-8 w-[950px] border-2" />
+        <Skeleton className="h-8 w-[950px] border-2" />
+      </div>
+      
+      </div>
+    
+  )
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (

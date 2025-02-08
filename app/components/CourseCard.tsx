@@ -12,15 +12,16 @@ export default function CourseCard({ id, title, description }: CourseCardProps) 
 
   return (
     <Card
-      className="relative bg-[#0a0a0a] border border-gray-800 text-white rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition"
-      onClick={() => router.push(`http://localhost:3000/home/view/${id}`)} // ✅ Redirect to course details page
+      className="relative bg-gray-900 border border-gray-700 text-white rounded-lg shadow-md overflow-hidden rounded-xl cursor-pointer hover:shadow-xl transition-transform transform hover:scale-105"
+      onClick={() => router.push(`http://localhost:3000/home/view/${id}`)}
     >
-      <CardContent className="p-4">
-      <div className="h-36 bg-blue-600 flex items-center justify-center rounded-xl hover:bg-blue-500">
-        <span className="bg-gray-900 text-lg px-3 py-1 rounded-xl hover:bg-gray-800">{title}</span>
-      </div>
-        
-        <p className="text-gray-400 text-xl">{description}</p>
+      <CardContent className="p-5 flex flex-col items-center">
+        <div className="w-full h-40 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center rounded-xl hover:from-purple-400 hover:to-blue-400">
+          <span className="bg-black bg-opacity-50 text-xl font-semibold px-4 py-2 rounded-xl text-white">
+            {title}
+          </span>
+        </div>
+        <p className="text-gray-300 text-center mt-3 text-lg">{description}</p>
       </CardContent>
     </Card>
   );

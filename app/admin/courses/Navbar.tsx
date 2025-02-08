@@ -17,6 +17,9 @@ export default function Navbar() {
           <Link href="/admin/courses/create">Add Course</Link>
         </Button>
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
+          <Link href="/admin/courses/create">Add Test</Link>
+        </Button>
+        <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
           <Link href="/admin/courses/allcourses"> Logout</Link>
         </Button>
       </div>
