@@ -3,12 +3,18 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export async function GET(req: NextRequest) {
+  // Extract 'id' from the request URL
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
 
-export async function GET(req: NextRequest, res: NextResponse, { params }: { params: { id: string } }) {
-  const { id } = params;
+  if (!id) {
+    return NextResponse.json({ error: "Course ID is required" }, { status: 400 });
+  }
+
   try {
     const course = await prisma.course.findUnique({
-      where: { id: params.id },
+      where: { id: id },
     });
 
     if (!course) {
