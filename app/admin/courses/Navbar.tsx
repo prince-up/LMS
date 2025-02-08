@@ -33,6 +33,9 @@ export default function Navbar() {
         <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
           <Link href="/admin/courses/test/createtest">Add Test</Link>
         </Button>
+        <Button variant="ghost" className="text-white rounded-full hover:bg-black/30">
+          <Link href="/admin/courses/attendance">Mark attendance</Link>
+        </Button>
         
         {/* Logout Button */}
         <Button
@@ -49,7 +52,7 @@ export default function Navbar() {
         variant="ghost"
         className="bg-black/20 text-white px-6 py-2 rounded-full hover:bg-black/30 shadow-sm shadow-blue-400/20 hover:shadow-blue-500/40 transition-all duration-300"
       >
-        User Mode
+        Log out
       </Button>
     </nav>
   );

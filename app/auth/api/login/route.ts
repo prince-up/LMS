@@ -35,6 +35,21 @@ export async function POST(req: Request) {
   }
 }
 
+// ✅ GET method to fetch all users (excluding passwords)
 export async function GET() {
-  return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
+  try {
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        createdAt: true,
+      },
+    });
+
+    return NextResponse.json({ success: true, users });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
+  }
 }
